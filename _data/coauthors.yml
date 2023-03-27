@@ -33,6 +33,6 @@
   - firstname: ["Max"]
     url: https://en.wikipedia.org/wiki/Max_Planck
 
-"Botian":
-  - firstname: ["Botian Shi", "Shi, Botian"]
-    url: https://github.com/friskit-china
+# "Shi":
+#   - firstname: ["Botian"]
+#     url: https://github.com/friskit-china

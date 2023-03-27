@@ -1,15 +1,15 @@
 github_users:
-  - friskit-china
-  - ventusff
-  - BAI-Yeqi
-  - BOBrown
-  - HueyTsai
-  - wtjiang98
-  - xiaokn
-  - SiyuanHuang95
-  - sky-fly97
-  - JiakangYuan
-  - Fayeben
+  # - friskit-china
+  # - ventusff
+  # - BAI-Yeqi
+  # - BOBrown
+  # - HueyTsai
+  # - wtjiang98
+  # - xiaokn
+  # - SiyuanHuang95
+  # - sky-fly97
+  # - JiakangYuan
+  # - Fayeben
 
 github_repos:
   - PJLab-ADG/SensorsCalibration

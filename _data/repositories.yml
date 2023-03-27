@@ -1,12 +1,20 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - friskit-china
+  - ventusff
+  - BAI-Yeqi
+  - BOBrown
+  - HueyTsai
+  - wtjiang98
+  - xiaokn
+  - SiyuanHuang95
+  - sky-fly97
+  - JiakangYuan
+  - Fayeben
 
 github_repos:
-  - alshedivat/al-folio
-  - twbs/bootstrap
-  - jekyll/jekyll
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - jpswalsh/academicons
-  - mathjax/MathJax
+  - PJLab-ADG/SensorsCalibration
+  - PJLab-ADG/3DTrans
+  - PJLab-ADG/PCSeg
+  - PJLab-ADG/Livox-Mapping
+  - PJLab-ADG/LiDARSimLib-and-Placement-Evaluation
+

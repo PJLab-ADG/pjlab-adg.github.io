@@ -14,12 +14,12 @@ redirect: https://bobrown.github.io/Team_3DTrans.github.io/
         {% include figure_a.html path="assets/projects/3DTrans/paper.png" title="Uni3D" class="img-fluid rounded" href="https://google.com" caption="Uni3D"%}
     </div>
     <div class="col-sm mt-4 mt-md-0 center">
-        {% include figure_a.html path="assets/projects/3DTrans/paper.png" title="Bi3D" class="img-fluid rounded" href="https://google.com" caption="Uni3D"%}
+        {% include figure_a.html path="assets/projects/3DTrans/paper.png" title="Bi3D" class="img-fluid rounded" href="https://google.com" caption="Bi3D"%}
     </div>
     <div class="col-sm mt-4 mt-md-0 center">
-        {% include figure_a.html path="assets/projects/3DTrans/paper.png" title="UniDA3D" class="img-fluid rounded" href="https://google.com" caption="Uni3D"%}
+        {% include figure_a.html path="assets/projects/3DTrans/paper.png" title="UniDA3D" class="img-fluid rounded" href="https://google.com" caption="UniDA3D"%}
     </div>
     <div class="col-sm mt-4 mt-md-0 center">
-        {% include figure_a.html path="assets/projects/3DTrans/github_pad.png" title="Code" class="img-fluid rounded" href="https://google.com" caption="Uni3D"%}
+        {% include figure_a.html path="assets/projects/3DTrans/github_pad.png" title="Code" class="img-fluid rounded" href="https://google.com" caption="Code"%}
     </div>
 </div>

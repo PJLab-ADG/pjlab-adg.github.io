@@ -1,2 +1,249 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://pjlab-adg.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://pjlab-adg.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-03-30T10:02:00+00:00</updated><id>https://pjlab-adg.github.io/feed.xml</id><title type="html">ADLab at Shanghai AI Laboratory</title><subtitle>A research team that are focusing on autonomous driving.
-</subtitle></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://pjlab-adg.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://pjlab-adg.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-03-30T10:22:30+00:00</updated><id>https://pjlab-adg.github.io/feed.xml</id><title type="html">ADLab at Shanghai AI Laboratory</title><subtitle>A research team that are focusing on autonomous driving.
+</subtitle><entry><title type="html">3DTrans: An Open-source Codebase for exploring Continuous-learning/Pre-training-oriented Autonomous Driving Task</title><link href="https://pjlab-adg.github.io/blog/2023/3DTrans/" rel="alternate" type="text/html" title="3DTrans: An Open-source Codebase for exploring Continuous-learning/Pre-training-oriented Autonomous Driving Task" /><published>2023-03-30T10:11:00+00:00</published><updated>2023-03-30T10:11:00+00:00</updated><id>https://pjlab-adg.github.io/blog/2023/3DTrans</id><content type="html" xml:base="https://pjlab-adg.github.io/blog/2023/3DTrans/"><![CDATA[<h2 id="overall">Overall</h2>
+
+<p>This blog will introduce the 3DTrans codebase developed by ADLab Team, which supports 3D point cloud transfer learning under autonomous driving for the first time. Besdies, 3DTrans codebase is also the official implementation codebase of Uni3D (accepted by CVPR-2023) and Bi3D (accepted by CVPR-2023).</p>
+
+<hr />
+
+<h2 id="what-does-3dtrans-codebase-do"><strong>What does 3DTrans Codebase do?</strong></h2>
+
+<p><strong>1) Rapid Target-domain Adaptation:</strong> <code class="language-plaintext highlighter-rouge">3DTrans</code> can boost the 3D perception model’s adaptability for an unseen domain only using unlabeled data. For example, <a href="https://arxiv.org/abs/2103.05346">ST3D</a> supported by <code class="language-plaintext highlighter-rouge">3DTrans</code> repository achieves a new state-of-the-art model transfer performance for many adaptation tasks, further boosting the transferability of detection models. Besides, <code class="language-plaintext highlighter-rouge">3DTrans</code> develops many new UDA techniques to solve different types of domain shifts (such as LiDAR-induced shifts or object-size-induced shifts), which includes Pre-SN, Post-SN, and range-map downsampling retraining.</p>
+
+<p><strong>2) Annotation-saving Target-domain Transfer:</strong> <code class="language-plaintext highlighter-rouge">3DTrans</code> can select the most informative subset of an unseen domain and label them at a minimum cost. For example, <code class="language-plaintext highlighter-rouge">3DTrans</code> develops the <a href="https://arxiv.org/abs/2303.05886">Bi3D</a>, which selects partial-yet-important target data and labels them at a minimum cost, to achieve a good trade-off between high performance and low annotation cost. Besides, <code class="language-plaintext highlighter-rouge">3DTrans</code> has integrated several typical transfer learning techniques into the 3D object detection pipeline. For example, we integrate the <a href="https://openaccess.thecvf.com/content/CVPR2021/papers/Fu_Transferable_Query_Selection_for_Active_Domain_Adaptation_CVPR_2021_paper.pdf">TQS</a>, <a href="https://arxiv.org/abs/2010.08666">CLUE</a>, <a href="https://arxiv.org/abs/2005.08139">SN</a>, <a href="https://arxiv.org/abs/2103.05346">ST3D</a>, <a href="https://arxiv.org/abs/2103.05346">Pseudo-labeling</a>, <a href="https://arxiv.org/abs/1912.11803">SESS</a>, and <a href="https://arxiv.org/abs/1703.01780">Mean-Teacher</a> for supporting autonomous driving-related model transfer.</p>
+
+<p><strong>3) Joint Training on Multiple 3D Datasets:</strong> <code class="language-plaintext highlighter-rouge">3DTrans</code> can perform the multi-dataset 3D object detection task. For example, <code class="language-plaintext highlighter-rouge">3DTrans</code> develops the <a href="https://arxiv.org/abs/2303.06880">Uni3D</a> for multi-dataset 3D object detection, which enables the current 3D baseline models to effectively learn from multiple off-the-shelf 3D datasets, boosting the reusability of 3D data from different autonomous driving manufacturers.</p>
+
+<p><strong>4) Multi-dataset Support:</strong> <code class="language-plaintext highlighter-rouge">3DTrans</code> provides a unified interface of dataloader, data augmentor, and data processor for multiple public benchmarks, including Waymo, nuScenes, ONCE, Lyft, and KITTI, etc, which is beneficial to study the transferability and generality of 3D perception models among different datasets. Besides, in order to eliminate the domain gaps between different manufacturers and obtain generalizable representations, <code class="language-plaintext highlighter-rouge">3DTrans</code> has integrated typical unlabeled pre-training techniques for giving a better parameter initialization of the current 3D baseline models. For example, we integrate the <a href="https://arxiv.org/abs/2007.10985">PointContrast</a> and <a href="https://arxiv.org/abs/1912.11803">SESS</a> to support point cloud-based pre-training task.</p>
+
+<p><strong>5) Extensibility for Multiple Models</strong>: <code class="language-plaintext highlighter-rouge">3DTrans</code> makes the baseline model have the ability of cross-domain/dataset safe transfer and multi-dataset joint training. Without making major changes of the code and 3D model structure, a single-dataset 3D baseline model can be successfully adapted to an unseen domain or dataset by using our <code class="language-plaintext highlighter-rouge">3DTrans</code>.</p>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/posts/2023-03-30-3DTrans/1-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/posts/2023-03-30-3DTrans/1-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/posts/2023-03-30-3DTrans/1-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/posts/2023-03-30-3DTrans/1.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+<h2 id="introduction-for-each-module"><strong>Introduction for Each Module</strong></h2>
+
+<p><code class="language-plaintext highlighter-rouge">3DTrans</code> is a lightweight, simple, self-contained open-source codebase for exploring the <strong>Autonomous Driving-oriented Transfer Learning Techniques</strong>, which mainly consists of <strong>four</strong> functions at present:</p>
+
+<p>1) Unsupervised Domain Adaptation (UDA) for 3D Point Clouds</p>
+
+<p>2) Active Domain Adaptation (ADA) for 3D Point Clouds</p>
+
+<p>3) Semi-Supervised Domain Adaptation (SSDA) for 3D Point Clouds</p>
+
+<p>4) Multi-dateset Domain Fusion (MDF) for 3D Point Clouds</p>
+
+<hr />
+
+<ul>
+  <li>
+    <p>Code Link:</p>
+
+    <p><a href="https://github.com/PJLab-ADG/3DTrans/blob/master/docs/GETTING_STARTED_UDA.md">https://github.com/PJLab-ADG/3DTrans/blob/master/docs/GETTING_STARTED_UDA.md</a></p>
+  </li>
+  <li>
+    <p><strong>UDA Module Introduction</strong></p>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">3DTrans</code>  is a codebase for supporting transfer learning in autonomous driving, and the most common transfer learning task is the UDA task. The assumption in UDA task is that the model can access to a full amount of labeled source domain data and unlabeled target domain data. <code class="language-plaintext highlighter-rouge">3DTrans</code>  achieves the existing UDA 3D methods such as ST3D[1]. Similarly, we provide LiDAR down-sampling retraining and Post/Pre-SN implementations for two common domain differences in 3D autonomous driving scenarios, namely, LiDAR-beam variation and Object-size change, to reduce target-specific domain differences.</p>
+
+<ul>
+  <li><strong>UDA@3DTrans, Experimental Results:</strong></li>
+</ul>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/posts/2023-03-30-3DTrans/2-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/posts/2023-03-30-3DTrans/2-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/posts/2023-03-30-3DTrans/2-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/posts/2023-03-30-3DTrans/2.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+<hr />
+
+<ul>
+  <li>
+    <p>Code Link:</p>
+
+    <p><a href="https://github.com/PJLab-ADG/3DTrans/blob/master/docs/GETTING_STARTED_ADA.md">https://github.com/PJLab-ADG/3DTrans/blob/master/docs/GETTING_STARTED_ADA.md</a></p>
+  </li>
+  <li>
+    <p><strong>ADA Module Introduction</strong></p>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">3DTrans</code> codebase supports a variety of typical ADA algorithms for the first time, including TQS[2], CLUE[3] and our Bi3D. Besides, by means of the TQS in <code class="language-plaintext highlighter-rouge">3DTrans</code>, you can perform well the query-by-committee, uncertainty, and other ADA evaluation metrics.</p>
+
+<p>TQS [2] consists of transferable committee, transferable uncertainty and transferable domain based on image-level features. In our reproduction, we use CNN to extract scene-level feature descriptions from BEV features, and use three classifier heads to build committees. Different from previous work using entropy to assess uncertainty, we calculated objective scores and a flag of 0.5. This scoring method is different from the original TQS [2] because we only focus on a single category and cannot use the highest score and The second highest score difference. Furthermore, we compute the domain score by the domain discriminator and set theta=0.75, delta=0.4, which is the same as TQS. To be consistent with TQS, we use source domain data and selected target data to fine-tune the detector trained on the source domain</p>
+
+<p>CLUE [3] uses uncertainty weighted clustering to select target data. Following this idea, we first obtain the uncertainty per frame by calculating the predicted entropy after NMS, and then use the average value of the entropy to represent the frame-level uncertainty. In addition, weighted K-Means and K centers proposed by CLUE [3] are used for clustering, where K represents the labeling budget at the current sampling moment.</p>
+
+<ul>
+  <li><strong>ADA@3DTrans, Experimental Results:</strong></li>
+</ul>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/posts/2023-03-30-3DTrans/3-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/posts/2023-03-30-3DTrans/3-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/posts/2023-03-30-3DTrans/3-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/posts/2023-03-30-3DTrans/3.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+<hr />
+
+<ul>
+  <li>
+    <p>Code Link:</p>
+
+    <p><a href="https://github.com/PJLab-ADG/3DTrans/blob/master/docs/GETTING_STARTED_SSDA.md">https://github.com/PJLab-ADG/3DTrans/blob/master/docs/GETTING_STARTED_SSDA.md</a></p>
+  </li>
+  <li>
+    <p><strong>SSDA Module Introduction</strong></p>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">3DTrans</code> codebase also supports a variety of semi-supervised algorithms, including the classic SESS[5] and Pseudo-Label[6] algorithms. And we show how to use the above semi-supervised method to deploy the model to the target domain under the domain shifts. The technical route of SSDA is: source domain pre-training model -&gt; fine-tuning under 1% or 5% labeled target domain data -&gt; retraining under semi-supervised target domain data. The semi-supervised algorithms supported by <code class="language-plaintext highlighter-rouge">3DTrans</code> are as follows:</p>
+
+<p>SESS[5] is an algorithm that guides the teacher model and the student model to randomly perturb the input data to maintain prediction consistency under the Mean Teacher paradigm. It designs a specific point-based data perturbation scheme and three consistency losses, which enable the network to generate more accurate detections. We have reproduced SESS in the code base and applied it to cross-domain detection.</p>
+
+<ul>
+  <li><strong>SSDA@3DTrans, Experimental Results:</strong></li>
+</ul>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/posts/2023-03-30-3DTrans/4-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/posts/2023-03-30-3DTrans/4-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/posts/2023-03-30-3DTrans/4-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/posts/2023-03-30-3DTrans/4.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+<hr />
+
+<ul>
+  <li>
+    <p>Code Link:</p>
+
+    <p><a href="https://github.com/PJLab-ADG/3DTrans/blob/master/docs/GETTING_STARTED_MDF.md">https://github.com/PJLab-ADG/3DTrans/blob/master/docs/GETTING_STARTED_MDF.md</a></p>
+  </li>
+  <li>
+    <p><strong>MDF Module Introduction</strong></p>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">3DTrans</code> codebase supports MDF task setting in 3D scene for the first time. Multi-domain Dataset Fusion (MDF) refers to the joint training of 3D object detectors on multiple datasets, which is necessary to achieve high detection accuracy from multiple datasets at the same time. It should be noted that compared with the Multi-source Domain Adaptation in the Domain Adaptation (DA) field, the MDF task proposed here does not require a close-set relationship assumption between different domains, which means that, from different domains (or datasets), the category distribution from different domains can be inconsistent. Compared with Multi-source Domain Adaptation, MDF task setting relaxes the conditional restrictions on data distribution and category distribution between different domains.</p>
+
+<ul>
+  <li><strong>MDF@3DTrans, Experimental Results:</strong></li>
+</ul>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/posts/2023-03-30-3DTrans/5-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/posts/2023-03-30-3DTrans/5-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/posts/2023-03-30-3DTrans/5-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/posts/2023-03-30-3DTrans/5.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+<hr />
+
+<hr />
+
+<ul>
+  <li>
+    <p>Code Link:</p>
+
+    <p><a href="https://github.com/PJLab-ADG/3DTrans/blob/master/docs/QUICK_SEQUENCE_DEMO.md">https://github.com/PJLab-ADG/3DTrans/blob/master/docs/QUICK_SEQUENCE_DEMO.md</a></p>
+  </li>
+  <li>
+    <p><strong>Visualization Module Introduction</strong></p>
+  </li>
+</ul>
+
+<p>At present, the visualization modules of some existing 3D point cloud code libraries are all single-frame visualizations, which lack processing for time-series data. To this end, we have added a Sequence-level visual UI tool to the <code class="language-plaintext highlighter-rouge">3DTrans</code>  codebase, and the visualization effect is very intuitive. Currently, it mainly supports the visualization of timing detection results of Waymo, ONCE and nuScenes datasets. The user can give a sequence ID to generate the corresponding visual content.</p>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/posts/2023-03-30-3DTrans/6.gif-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/posts/2023-03-30-3DTrans/6.gif-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/posts/2023-03-30-3DTrans/6.gif-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/posts/2023-03-30-3DTrans/6.gif" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+<h2 id="what-3dtrans-is-doing">What <code class="language-plaintext highlighter-rouge">3DTrans</code> is Doing</h2>
+
+<p>The recent ChatGPT / GPT-4 and other large language models have inspired us that we should think about the large-scale point cloud dataset pre-training under the autonomous driving. As we all know, a comprehensive and diverse corpus is the major reason of building a powerful or general-purpose NLP large model. Some research studies have shown that, if representative and highly differentiated pre-training datasets can be obtained, the increase in the number of basic model parameters can lead to an improvement in downstream performance.</p>
+
+<p>However, in the 3D LiDAR autonomous driving scenario, due to the large differences between the raw data provided by different manufacturers, it is difficult to obtain a unified dataset in the field of autonomous driving. Therefore, at this stage, we believe that a necessary route to achieve unified perception in the field of autonomous driving is to construct a unified dataset, or to design a unified baseline model so that it can learn a unified representation in a differentiated dataset. Of course, Uni3D chose the latter route. At the same time, we also tried to achieve the former route. Bi3D is exploring how to select the most valuable data from the massive unlabeled autonomous driving data set. .</p>
+
+<p><strong>Recently, we are exploring the effective algorithms to select valuable samples (diversity and low redundancy) from massive autonomous driving scenes, and further designing effective solutions to allow models to learn unified representations from multi-source data.</strong></p>
+
+<h2 id="reference">Reference</h2>
+
+<p>[1] Jihan Yang, Shaoshuai Shi, Zhe Wang, Hongsheng Li, Xiaojuan Qi. ST3D: Self-training for Unsupervised Domain Adaptation on 3D Object Detection.</p>
+
+<p>[2] Bo Fu, Zhangjie Cao, Jianmin Wang, and Mingsheng Long. Transferable Query Selection for Active Domain Adaptation.</p>
+
+<p>[3] Viraj Prabhu, Arjun Chandrasekaran, Kate Saenko, Judy Hoffman. Active Domain Adaptation via Clustering Uncertainty-weighted Embeddings.</p>
+
+<p>[4] Yan Wang, Xiangyu Chen, Yurong You, Li Erran, Bharath Hariharan, Mark Campbell, Kilian Q. Weinberger, Wei-Lun Chao. Train in Germany, Test in The USA: Making 3D Object Detectors Generalize.</p>
+
+<p>[5] Na Zhao, Tat-Seng Chua, Gim Hee Lee. SESS: Self-Ensembling Semi-Supervised 3D Object Detection.</p>
+
+<p>[6] Antti Tarvainen, Harri Valpola. Mean teachers are better role models: Weight-averaged consistency targets improve semi-supervised deep learning results.</p>
+
+<p>[7] Saining Xie, Jiatao Gu, Demi Guo, Charles R. Qi, Leonidas J. Guibas, Or Litany. PointContrast: Unsupervised Pre-training for 3D Point Cloud Understanding</p>]]></content><author><name></name></author><category term="perception" /><summary type="html"><![CDATA[Overall]]></summary></entry></feed>

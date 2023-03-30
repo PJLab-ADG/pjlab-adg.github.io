@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    <!-- Metadata, OpenGraph and Schema.org -->
+    
+
+    <!-- Standard metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>3DTrans: An Open-source Codebase for exploring Continuous-learning/Pre-training-oriented Autonomous Driving Task | ADLab at Shanghai AI Laboratory</title>
+    <meta name="author" content="  ADLab">
+    <meta name="description" content="A research team that are focusing on autonomous driving.
+">
+    <meta name="keywords" content="ADLab, Shanghai-AI-Lab, autonomous-driving">
+
+
+    <!-- Bootstrap & MDB -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700%7CRoboto+Slab:100,300,400,500,700%7CMaterial+Icons">
+
+    <!-- Code Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light">
+
+    <!-- Styles -->
+    
+    <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%9A%98&lt;/text&gt;&lt;/svg&gt;">
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="canonical" href="https://pjlab-adg.github.io/blog/2023/3DTrans/">
+    
+    <!-- Dark Mode -->
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark">
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/dark_mode.js"></script>
+    
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav ">
+
+    <!-- Header -->
+    <header>
+
+      <!-- Nav Bar -->
+      <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+        <div class="container">
+          <a class="navbar-brand title font-weight-lighter" href="/">ADLab at Shanghai AI Laboratory</a>
+          <!-- Navbar Toggle -->
+          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+          </button>
+
+          <div class="collapse navbar-collapse text-right" id="navbarNav">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+
+              <!-- About -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/">about</a>
+              </li>
+              
+              <!-- Blog -->
+              <li class="nav-item active">
+                <a class="nav-link" href="/blog/">blog<span class="sr-only">(current)</span></a>
+              </li>
+
+              <!-- Other pages -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/publications/">publications</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/projects/">projects</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/repositories/">repositories</a>
+              </li>
+
+              <!-- Toogle theme mode -->
+              <li class="toggle-container">
+                <button id="light-toggle" title="Change theme">
+                  <i class="fas fa-moon"></i>
+                  <i class="fas fa-sun"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Scrolling Progress Bar -->
+      <progress id="progress" value="0">
+        <div class="progress-container">
+          <span class="progress-bar"></span>
+        </div>
+      </progress>
+    </header>
+
+
+    <!-- Content -->
+    <div class="container mt-5">
+      <!-- _layouts/post.html -->
+
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">3DTrans: An Open-source Codebase for exploring Continuous-learning/Pre-training-oriented Autonomous Driving Task</h1>
+    <p class="post-meta">March 30, 2023</p>
+    <p class="post-tags">
+      <a href="/blog/2023"> <i class="fas fa-calendar fa-sm"></i> 2023 </a>
+        ·  
+        <a href="/blog/category/perception">
+          <i class="fas fa-tag fa-sm"></i> perception</a>  
+          
+
+    </p>
+  </header>
+
+  <article class="post-content">
+    <h2 id="overall">Overall</h2>
+
+<p>This blog will introduce the 3DTrans codebase developed by ADLab Team, which supports 3D point cloud transfer learning under autonomous driving for the first time. Besdies, 3DTrans codebase is also the official implementation codebase of Uni3D (accepted by CVPR-2023) and Bi3D (accepted by CVPR-2023).</p>
+
+<hr>
+
+<h2 id="what-does-3dtrans-codebase-do"><strong>What does 3DTrans Codebase do?</strong></h2>
+
+<p><strong>1) Rapid Target-domain Adaptation:</strong> <code class="language-plaintext highlighter-rouge">3DTrans</code> can boost the 3D perception model’s adaptability for an unseen domain only using unlabeled data. For example, <a href="https://arxiv.org/abs/2103.05346" rel="external nofollow noopener" target="_blank">ST3D</a> supported by <code class="language-plaintext highlighter-rouge">3DTrans</code> repository achieves a new state-of-the-art model transfer performance for many adaptation tasks, further boosting the transferability of detection models. Besides, <code class="language-plaintext highlighter-rouge">3DTrans</code> develops many new UDA techniques to solve different types of domain shifts (such as LiDAR-induced shifts or object-size-induced shifts), which includes Pre-SN, Post-SN, and range-map downsampling retraining.</p>
+
+<p><strong>2) Annotation-saving Target-domain Transfer:</strong> <code class="language-plaintext highlighter-rouge">3DTrans</code> can select the most informative subset of an unseen domain and label them at a minimum cost. For example, <code class="language-plaintext highlighter-rouge">3DTrans</code> develops the <a href="https://arxiv.org/abs/2303.05886" rel="external nofollow noopener" target="_blank">Bi3D</a>, which selects partial-yet-important target data and labels them at a minimum cost, to achieve a good trade-off between high performance and low annotation cost. Besides, <code class="language-plaintext highlighter-rouge">3DTrans</code> has integrated several typical transfer learning techniques into the 3D object detection pipeline. For example, we integrate the <a href="https://openaccess.thecvf.com/content/CVPR2021/papers/Fu_Transferable_Query_Selection_for_Active_Domain_Adaptation_CVPR_2021_paper.pdf" rel="external nofollow noopener" target="_blank">TQS</a>, <a href="https://arxiv.org/abs/2010.08666" rel="external nofollow noopener" target="_blank">CLUE</a>, <a href="https://arxiv.org/abs/2005.08139" rel="external nofollow noopener" target="_blank">SN</a>, <a href="https://arxiv.org/abs/2103.05346" rel="external nofollow noopener" target="_blank">ST3D</a>, <a href="https://arxiv.org/abs/2103.05346" rel="external nofollow noopener" target="_blank">Pseudo-labeling</a>, <a href="https://arxiv.org/abs/1912.11803" rel="external nofollow noopener" target="_blank">SESS</a>, and <a href="https://arxiv.org/abs/1703.01780" rel="external nofollow noopener" target="_blank">Mean-Teacher</a> for supporting autonomous driving-related model transfer.</p>
+
+<p><strong>3) Joint Training on Multiple 3D Datasets:</strong> <code class="language-plaintext highlighter-rouge">3DTrans</code> can perform the multi-dataset 3D object detection task. For example, <code class="language-plaintext highlighter-rouge">3DTrans</code> develops the <a href="https://arxiv.org/abs/2303.06880" rel="external nofollow noopener" target="_blank">Uni3D</a> for multi-dataset 3D object detection, which enables the current 3D baseline models to effectively learn from multiple off-the-shelf 3D datasets, boosting the reusability of 3D data from different autonomous driving manufacturers.</p>
+
+<p><strong>4) Multi-dataset Support:</strong> <code class="language-plaintext highlighter-rouge">3DTrans</code> provides a unified interface of dataloader, data augmentor, and data processor for multiple public benchmarks, including Waymo, nuScenes, ONCE, Lyft, and KITTI, etc, which is beneficial to study the transferability and generality of 3D perception models among different datasets. Besides, in order to eliminate the domain gaps between different manufacturers and obtain generalizable representations, <code class="language-plaintext highlighter-rouge">3DTrans</code> has integrated typical unlabeled pre-training techniques for giving a better parameter initialization of the current 3D baseline models. For example, we integrate the <a href="https://arxiv.org/abs/2007.10985" rel="external nofollow noopener" target="_blank">PointContrast</a> and <a href="https://arxiv.org/abs/1912.11803" rel="external nofollow noopener" target="_blank">SESS</a> to support point cloud-based pre-training task.</p>
+
+<p><strong>5) Extensibility for Multiple Models</strong>: <code class="language-plaintext highlighter-rouge">3DTrans</code> makes the baseline model have the ability of cross-domain/dataset safe transfer and multi-dataset joint training. Without making major changes of the code and 3D model structure, a single-dataset 3D baseline model can be successfully adapted to an unseen domain or dataset by using our <code class="language-plaintext highlighter-rouge">3DTrans</code>.</p>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/posts/2023-03-30-3DTrans/1-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/posts/2023-03-30-3DTrans/1-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/posts/2023-03-30-3DTrans/1-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/posts/2023-03-30-3DTrans/1.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<h2 id="introduction-for-each-module"><strong>Introduction for Each Module</strong></h2>
+
+<p><code class="language-plaintext highlighter-rouge">3DTrans</code> is a lightweight, simple, self-contained open-source codebase for exploring the <strong>Autonomous Driving-oriented Transfer Learning Techniques</strong>, which mainly consists of <strong>four</strong> functions at present:</p>
+
+<p>1) Unsupervised Domain Adaptation (UDA) for 3D Point Clouds</p>
+
+<p>2) Active Domain Adaptation (ADA) for 3D Point Clouds</p>
+
+<p>3) Semi-Supervised Domain Adaptation (SSDA) for 3D Point Clouds</p>
+
+<p>4) Multi-dateset Domain Fusion (MDF) for 3D Point Clouds</p>
+
+<hr>
+
+<ul>
+  <li>
+    <p>Code Link:</p>
+
+    <p><a href="https://github.com/PJLab-ADG/3DTrans/blob/master/docs/GETTING_STARTED_UDA.md" rel="external nofollow noopener" target="_blank">https://github.com/PJLab-ADG/3DTrans/blob/master/docs/GETTING_STARTED_UDA.md</a></p>
+  </li>
+  <li>
+    <p><strong>UDA Module Introduction</strong></p>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">3DTrans</code>  is a codebase for supporting transfer learning in autonomous driving, and the most common transfer learning task is the UDA task. The assumption in UDA task is that the model can access to a full amount of labeled source domain data and unlabeled target domain data. <code class="language-plaintext highlighter-rouge">3DTrans</code>  achieves the existing UDA 3D methods such as ST3D[1]. Similarly, we provide LiDAR down-sampling retraining and Post/Pre-SN implementations for two common domain differences in 3D autonomous driving scenarios, namely, LiDAR-beam variation and Object-size change, to reduce target-specific domain differences.</p>
+
+<ul>
+  <li><strong>UDA@3DTrans, Experimental Results:</strong></li>
+</ul>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/posts/2023-03-30-3DTrans/2-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/posts/2023-03-30-3DTrans/2-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/posts/2023-03-30-3DTrans/2-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/posts/2023-03-30-3DTrans/2.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<hr>
+
+<ul>
+  <li>
+    <p>Code Link:</p>
+
+    <p><a href="https://github.com/PJLab-ADG/3DTrans/blob/master/docs/GETTING_STARTED_ADA.md" rel="external nofollow noopener" target="_blank">https://github.com/PJLab-ADG/3DTrans/blob/master/docs/GETTING_STARTED_ADA.md</a></p>
+  </li>
+  <li>
+    <p><strong>ADA Module Introduction</strong></p>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">3DTrans</code> codebase supports a variety of typical ADA algorithms for the first time, including TQS[2], CLUE[3] and our Bi3D. Besides, by means of the TQS in <code class="language-plaintext highlighter-rouge">3DTrans</code>, you can perform well the query-by-committee, uncertainty, and other ADA evaluation metrics.</p>
+
+<p>TQS [2] consists of transferable committee, transferable uncertainty and transferable domain based on image-level features. In our reproduction, we use CNN to extract scene-level feature descriptions from BEV features, and use three classifier heads to build committees. Different from previous work using entropy to assess uncertainty, we calculated objective scores and a flag of 0.5. This scoring method is different from the original TQS [2] because we only focus on a single category and cannot use the highest score and The second highest score difference. Furthermore, we compute the domain score by the domain discriminator and set theta=0.75, delta=0.4, which is the same as TQS. To be consistent with TQS, we use source domain data and selected target data to fine-tune the detector trained on the source domain</p>
+
+<p>CLUE [3] uses uncertainty weighted clustering to select target data. Following this idea, we first obtain the uncertainty per frame by calculating the predicted entropy after NMS, and then use the average value of the entropy to represent the frame-level uncertainty. In addition, weighted K-Means and K centers proposed by CLUE [3] are used for clustering, where K represents the labeling budget at the current sampling moment.</p>
+
+<ul>
+  <li><strong>ADA@3DTrans, Experimental Results:</strong></li>
+</ul>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/posts/2023-03-30-3DTrans/3-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/posts/2023-03-30-3DTrans/3-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/posts/2023-03-30-3DTrans/3-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/posts/2023-03-30-3DTrans/3.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<hr>
+
+<ul>
+  <li>
+    <p>Code Link:</p>
+
+    <p><a href="https://github.com/PJLab-ADG/3DTrans/blob/master/docs/GETTING_STARTED_SSDA.md" rel="external nofollow noopener" target="_blank">https://github.com/PJLab-ADG/3DTrans/blob/master/docs/GETTING_STARTED_SSDA.md</a></p>
+  </li>
+  <li>
+    <p><strong>SSDA Module Introduction</strong></p>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">3DTrans</code> codebase also supports a variety of semi-supervised algorithms, including the classic SESS[5] and Pseudo-Label[6] algorithms. And we show how to use the above semi-supervised method to deploy the model to the target domain under the domain shifts. The technical route of SSDA is: source domain pre-training model -&gt; fine-tuning under 1% or 5% labeled target domain data -&gt; retraining under semi-supervised target domain data. The semi-supervised algorithms supported by <code class="language-plaintext highlighter-rouge">3DTrans</code> are as follows:</p>
+
+<p>SESS[5] is an algorithm that guides the teacher model and the student model to randomly perturb the input data to maintain prediction consistency under the Mean Teacher paradigm. It designs a specific point-based data perturbation scheme and three consistency losses, which enable the network to generate more accurate detections. We have reproduced SESS in the code base and applied it to cross-domain detection.</p>
+
+<ul>
+  <li><strong>SSDA@3DTrans, Experimental Results:</strong></li>
+</ul>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/posts/2023-03-30-3DTrans/4-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/posts/2023-03-30-3DTrans/4-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/posts/2023-03-30-3DTrans/4-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/posts/2023-03-30-3DTrans/4.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<hr>
+
+<ul>
+  <li>
+    <p>Code Link:</p>
+
+    <p><a href="https://github.com/PJLab-ADG/3DTrans/blob/master/docs/GETTING_STARTED_MDF.md" rel="external nofollow noopener" target="_blank">https://github.com/PJLab-ADG/3DTrans/blob/master/docs/GETTING_STARTED_MDF.md</a></p>
+  </li>
+  <li>
+    <p><strong>MDF Module Introduction</strong></p>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">3DTrans</code> codebase supports MDF task setting in 3D scene for the first time. Multi-domain Dataset Fusion (MDF) refers to the joint training of 3D object detectors on multiple datasets, which is necessary to achieve high detection accuracy from multiple datasets at the same time. It should be noted that compared with the Multi-source Domain Adaptation in the Domain Adaptation (DA) field, the MDF task proposed here does not require a close-set relationship assumption between different domains, which means that, from different domains (or datasets), the category distribution from different domains can be inconsistent. Compared with Multi-source Domain Adaptation, MDF task setting relaxes the conditional restrictions on data distribution and category distribution between different domains.</p>
+
+<ul>
+  <li><strong>MDF@3DTrans, Experimental Results:</strong></li>
+</ul>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/posts/2023-03-30-3DTrans/5-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/posts/2023-03-30-3DTrans/5-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/posts/2023-03-30-3DTrans/5-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/posts/2023-03-30-3DTrans/5.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<hr>
+
+<hr>
+
+<ul>
+  <li>
+    <p>Code Link:</p>
+
+    <p><a href="https://github.com/PJLab-ADG/3DTrans/blob/master/docs/QUICK_SEQUENCE_DEMO.md" rel="external nofollow noopener" target="_blank">https://github.com/PJLab-ADG/3DTrans/blob/master/docs/QUICK_SEQUENCE_DEMO.md</a></p>
+  </li>
+  <li>
+    <p><strong>Visualization Module Introduction</strong></p>
+  </li>
+</ul>
+
+<p>At present, the visualization modules of some existing 3D point cloud code libraries are all single-frame visualizations, which lack processing for time-series data. To this end, we have added a Sequence-level visual UI tool to the <code class="language-plaintext highlighter-rouge">3DTrans</code>  codebase, and the visualization effect is very intuitive. Currently, it mainly supports the visualization of timing detection results of Waymo, ONCE and nuScenes datasets. The user can give a sequence ID to generate the corresponding visual content.</p>
+
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/posts/2023-03-30-3DTrans/6.gif-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/posts/2023-03-30-3DTrans/6.gif-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/posts/2023-03-30-3DTrans/6.gif-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/posts/2023-03-30-3DTrans/6.gif" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+<h2 id="what-3dtrans-is-doing">What <code class="language-plaintext highlighter-rouge">3DTrans</code> is Doing</h2>
+
+<p>The recent ChatGPT / GPT-4 and other large language models have inspired us that we should think about the large-scale point cloud dataset pre-training under the autonomous driving. As we all know, a comprehensive and diverse corpus is the major reason of building a powerful or general-purpose NLP large model. Some research studies have shown that, if representative and highly differentiated pre-training datasets can be obtained, the increase in the number of basic model parameters can lead to an improvement in downstream performance.</p>
+
+<p>However, in the 3D LiDAR autonomous driving scenario, due to the large differences between the raw data provided by different manufacturers, it is difficult to obtain a unified dataset in the field of autonomous driving. Therefore, at this stage, we believe that a necessary route to achieve unified perception in the field of autonomous driving is to construct a unified dataset, or to design a unified baseline model so that it can learn a unified representation in a differentiated dataset. Of course, Uni3D chose the latter route. At the same time, we also tried to achieve the former route. Bi3D is exploring how to select the most valuable data from the massive unlabeled autonomous driving data set. .</p>
+
+<p><strong>Recently, we are exploring the effective algorithms to select valuable samples (diversity and low redundancy) from massive autonomous driving scenes, and further designing effective solutions to allow models to learn unified representations from multi-source data.</strong></p>
+
+<h2 id="reference">Reference</h2>
+
+<p>[1] Jihan Yang, Shaoshuai Shi, Zhe Wang, Hongsheng Li, Xiaojuan Qi. ST3D: Self-training for Unsupervised Domain Adaptation on 3D Object Detection.</p>
+
+<p>[2] Bo Fu, Zhangjie Cao, Jianmin Wang, and Mingsheng Long. Transferable Query Selection for Active Domain Adaptation.</p>
+
+<p>[3] Viraj Prabhu, Arjun Chandrasekaran, Kate Saenko, Judy Hoffman. Active Domain Adaptation via Clustering Uncertainty-weighted Embeddings.</p>
+
+<p>[4] Yan Wang, Xiangyu Chen, Yurong You, Li Erran, Bharath Hariharan, Mark Campbell, Kilian Q. Weinberger, Wei-Lun Chao. Train in Germany, Test in The USA: Making 3D Object Detectors Generalize.</p>
+
+<p>[5] Na Zhao, Tat-Seng Chua, Gim Hee Lee. SESS: Self-Ensembling Semi-Supervised 3D Object Detection.</p>
+
+<p>[6] Antti Tarvainen, Harri Valpola. Mean teachers are better role models: Weight-averaged consistency targets improve semi-supervised deep learning results.</p>
+
+<p>[7] Saining Xie, Jiatao Gu, Demi Guo, Charles R. Qi, Leonidas J. Guibas, Or Litany. PointContrast: Unsupervised Pre-training for 3D Point Cloud Understanding</p>
+
+  </article>
+</div>
+
+    </div>
+
+    <!-- Footer -->    
+    <footer class="fixed-bottom">
+      <div class="container mt-0">
+        © Copyright 2023   ADLab. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
+
+      </div>
+    </footer>
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- Bootsrap & MDB scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+    <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+  <script defer src="/assets/js/masonry.js" type="text/javascript"></script>
+    
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js"></script><!-- Load Common JS -->
+  <script defer src="/assets/js/common.js"></script>
+  <script defer src="/assets/js/copy_code.js" type="text/javascript"></script>
+
+    
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+    <!-- MathJax -->
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        tags: 'ams'
+      }
+    };
+  </script>
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+  <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    
+    
+
+<!-- Scrolling Progress Bar -->
+<script type="text/javascript">
+  /*
+   * This JavaScript code has been adapted from the article 
+   * https://css-tricks.com/reading-position-indicator/ authored by Pankaj Parashar, 
+   * published on the website https://css-tricks.com on the 7th of May, 2014.
+   * Couple of changes were made to the original code to make it compatible 
+   * with the `al-foio` theme.
+   */
+  const progressBar = $("#progress");
+  /*
+   * We set up the bar after all elements are done loading.
+   * In some cases, if the images in the page are larger than the intended
+   * size they'll have on the page, they'll be resized via CSS to accomodate
+   * the desired size. This mistake, however, breaks the computations as the
+   * scroll size is computed as soon as the elements finish loading.
+   * To account for this, a minimal delay was introduced before computing the
+   * values.
+   */
+  window.onload = function () {
+    setTimeout(progressBarSetup, 50);
+  };
+  /*
+   * We set up the bar according to the browser.
+   * If the browser supports the progress element we use that.
+   * Otherwise, we resize the bar thru CSS styling
+   */
+  function progressBarSetup() {
+    if ("max" in document.createElement("progress")) {
+      initializeProgressElement();
+      $(document).on("scroll", function() {
+        progressBar.attr({ value: getCurrentScrollPosition() });
+      });
+      $(window).on("resize", initializeProgressElement);
+    } else {
+      resizeProgressBar();
+      $(document).on("scroll", resizeProgressBar);
+      $(window).on("resize", resizeProgressBar);
+    }
+  }
+  /*
+   * The vertical scroll position is the same as the number of pixels that
+   * are hidden from view above the scrollable area. Thus, a value > 0 is
+   * how much the user has scrolled from the top
+   */
+  function getCurrentScrollPosition() {
+    return $(window).scrollTop();
+  }
+
+  function initializeProgressElement() {
+    let navbarHeight = $("#navbar").outerHeight(true);
+    $("body").css({ "padding-top": navbarHeight });
+    $("progress-container").css({ "padding-top": navbarHeight });
+    progressBar.css({ top: navbarHeight });
+    progressBar.attr({
+      max: getDistanceToScroll(),
+      value: getCurrentScrollPosition(),
+    });
+  }
+  /*
+   * The offset between the html document height and the browser viewport
+   * height will be greater than zero if vertical scroll is possible.
+   * This is the distance the user can scroll
+   */
+  function getDistanceToScroll() {
+    return $(document).height() - $(window).height();
+  }
+
+  function resizeProgressBar() {
+    progressBar.css({ width: getWidthPercentage() + "%" });
+  }
+  // The scroll ratio equals the percentage to resize the bar
+  function getWidthPercentage() {
+    return (getCurrentScrollPosition() / getDistanceToScroll()) * 100;
+  }
+</script>
+
+  </body>
+</html>

@@ -5,7 +5,7 @@ permalink: /projects/
 description: A growing collection of our cool projects.
 nav: true
 nav_order: 2
-display_categories: [Perception, Decision & Planning, Neural Rendering]
+display_categories: [Perception, Decision & Planning, Sensors & Neural Rendering]
 horizontal: false
 ---
 

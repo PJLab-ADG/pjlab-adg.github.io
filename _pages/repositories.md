@@ -4,7 +4,7 @@ permalink: /repositories/
 title: repositories
 description: We are committed to open-source our research and contribute to the community.
 nav: true
-nav_order: 3
+nav_order: 4
 ---
 
 {% if site.data.repositories.github_repos %}

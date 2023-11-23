@@ -4,7 +4,7 @@ title: projects
 permalink: /projects/
 description: A growing collection of our cool projects.
 nav: true
-nav_order: 2
+nav_order: 3
 display_categories: [Perception, Decision & Planning, Sensors & Neural Rendering]
 horizontal: false
 ---

@@ -1,0 +1,17 @@
+<!-- _inludes/people.html -->
+
+<div class="grid-sizer"></div>
+<div class="grid-item">
+    {% if people_item.redirect %}
+    <a href="{{ people_item.redirect }}">
+    {% else %}
+    <a href="{{ people_item.url | relative_url }}">
+    {% endif %}
+        <div class="card hoverable"> {%- include figure.html path=people_item.portrait alt=people_item.title -%} 
+        <div class="card-body">
+            <h2 class="card-title">{{ people_item.title }}</h2>
+            <p class="card-text">{{ people_item.description }}</p>
+        </div>
+        </div>
+    </a>
+</div>

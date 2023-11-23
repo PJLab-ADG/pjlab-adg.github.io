@@ -21,11 +21,9 @@ social: true  # includes social icons at the bottom of the page
 
 This is the official website of ADLab (ADG at Shanghai AI Laboratory).
 
-We are a research team at Shanghai Artificial Intelligence Laboratory who are focusing on the research of autonomous driving, including 3D Perception, Decision and Planning, Traffic Flow Simulation, Implicit Neural Rendering and 3D Reconstruction. 
+We are a research team at Shanghai Artificial Intelligence Laboratory who are focusing on the research of autonomous driving. We are now working on building the next-gen autonomous driving system by incorporating commonsense and human knowledge.
 
-**We are committed to driving the shift from data-driven to knowledge-driven to knowledge-driven in autonomous driving.**
-
-Now we have about 20 faculty members and 20+ interns (including full-time research interns and joint Ph.D. students). Join us and make history in autonomous driving research.
+Now we have about 20 faculty members and 20+ interns (including full-time research interns and joint Ph.D. students). Join us and writing the pages of history.
 
 <!-- 
 Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.

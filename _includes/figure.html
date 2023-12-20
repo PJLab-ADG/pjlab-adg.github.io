@@ -25,6 +25,7 @@
       {% if include.max-height %}height="{{ include.max-height }}"{% endif %} 
       {% if include.alt %}alt="{{ include.alt }}"{% endif %} 
       {% if include.title %}title="{{ include.title }}"{% endif %} 
+      {% if include.url %}href="{{ include.url }}"{% endif %}
       {% if include.zoomable %}data-zoomable{% endif %}
       onerror="this.onerror=null; $('.responsive-img-srcset').remove();"
     />

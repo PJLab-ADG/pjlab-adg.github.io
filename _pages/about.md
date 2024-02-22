@@ -19,14 +19,6 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-<!-- 
-<br/>
-
-{% include figure_a.html path="assets/xo.jpg" class="img-fluid rounded z-depth-1" href="https://www.ie.cuhk.edu.hk/in-memory-of-prof-xiaoou-tang-1968-2023"%}
-
-<br/>
--->
-
 This is the official website of ADLab (ADG at Shanghai AI Laboratory).
 
 As a research team affiliated with the Shanghai Artificial Intelligence Laboratory, ADLab is primarily focused on cutting-edge research in autonomous driving. Our current endeavor involves developing the next-generation autonomous driving system by integrating human knowledge and common sense. We believe that the knowledge-driven paradigm will elevate the reliability and generalizability of autonomous driving system to a new level.

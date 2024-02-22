@@ -6,7 +6,7 @@ subtitle:
 
 profile:
   align: right
-  image: # ADLab.svg
+  image: ADLab.svg
   image_circular: false # crops the image to make it circular
   address: 
   # address: >
@@ -19,12 +19,13 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
+<!-- 
 <br/>
 
 {% include figure_a.html path="assets/xo.jpg" class="img-fluid rounded z-depth-1" href="https://www.ie.cuhk.edu.hk/in-memory-of-prof-xiaoou-tang-1968-2023"%}
 
 <br/>
-
+-->
 
 This is the official website of ADLab (ADG at Shanghai AI Laboratory).
 
@@ -32,9 +33,9 @@ As a research team affiliated with the Shanghai Artificial Intelligence Laborato
 
 Now we have about 20 faculty members and 20+ interns (including full-time research interns and joint Ph.D. students). Join us and writing the pages of history.
 
-<!-- 
+
 { include figure.html path="assets/team_photo.jpg" class="img-fluid rounded z-depth-1" } 
--->
+
 
 <!-- 
 Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.

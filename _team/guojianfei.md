@@ -2,7 +2,7 @@
 layout: page
 title: Jianfei Guo
 description: <br>
-order: 4
+order: 2
 portrait: assets/people/guojianfei.jpg
 # category: Faculty or Visiting Scholar or Joint Ph.D
 # category: Intern or Visiting Student

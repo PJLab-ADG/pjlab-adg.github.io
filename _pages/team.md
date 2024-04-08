@@ -6,7 +6,7 @@ description: A group of people who devoted to next-generation autonomous driving
 nav: true
 nav_order: 1
 display_categories: [Faculty or Visiting Scholar or Joint Ph.D, Intern or Visiting Student]
-# display_categories: [Faculty or Visiting Scholar or Joint Ph.D, Intern or Visiting Student, Alumni]
+display_categories: [Faculty or Visiting Scholar or Joint Ph.D, Intern or Visiting Student, Alumni]
 ---
 
 <div class="team">

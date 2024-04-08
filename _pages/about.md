@@ -26,7 +26,7 @@ As a research team affiliated with the Shanghai Artificial Intelligence Laborato
 Now we have about 20 faculty members and 20+ interns (including full-time research interns and joint Ph.D. students). Join us and writing the pages of history.
 
 
-{ include figure.html path="assets/team_photo.jpg" class="img-fluid rounded z-depth-1" } 
+{% include figure.html path="assets/team_photo.jpg" class="img-fluid rounded z-depth-1" %} 
 
 
 <!-- 
